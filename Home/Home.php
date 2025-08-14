@@ -41,7 +41,7 @@
         </div>
     </main>
     <footer>
-        <p>Made with ❤ — GitHub-style, no framework, 100% static.</p>
+        <p>Long's - No Framework - 100% static.</p>
     </footer>
     <script src="script.js"></script>
 </body>
