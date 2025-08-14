@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects • Dev Hub</title>
+  <style>
+    :root{
+      --bg: #0d1117;         /* GitHub dark */
+      --panel: #161b22;
+      --soft: #21262d;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --brand: #2f81f7;
+      --green: #3fb950;
+      --yellow: #d29922;
+      --red: #f85149;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f6f8fa;
+        --panel: #ffffff;
+        --soft: #eaeef2;
+        --text: #24292f;
+        --muted: #57606a;
+        --brand: #0969da;
+        --green: #1a7f37;
+        --yellow: #9a6700;
+        --red: #cf222e;
+        --shadow: 0 10px 30px rgba(0,0,0,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* Header */
+    .header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:22px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--brand),#6e40c9);display:grid;place-items:center;color:white;font-weight:700;box-shadow:var(--shadow)}
+    .title{font-weight:800;font-size:20px}
+    .toolbar{display:flex;gap:10px;align-items:center}
+    .input{background:var(--panel);border:1px solid var(--soft);color:var(--text);padding:10px 12px;border-radius:10px;min-width:260px;outline:none}
+    .btn{background:var(--panel);border:1px solid var(--soft);color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
+    .btn:hover{border-color:var(--brand)}
+
+    /* Filters */
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+    .chip{padding:6px 10px;border:1px solid var(--soft);border-radius:999px;background:var(--panel);color:var(--muted);cursor:pointer}
+    .chip.active{color:var(--text);border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in oklab, var(--brand) 30%, transparent)}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:14px}
+    @media (min-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (min-width:960px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+    .card{background:var(--panel);border:1px solid var(--soft);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:10px;position:relative;transition:transform .12s ease,border-color .12s ease}
+    .card:hover{transform:translateY(-2px);border-color:var(--brand)}
+    .card .name{font-weight:800;display:flex;align-items:center;gap:8px}
+    .card .desc{color:var(--muted);min-height:44px}
+    .meta{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:13px;flex-wrap:wrap}
+    .lang{display:flex;gap:6px;align-items:center}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .badge{background:rgba(99,99,99,.15);border:1px solid var(--soft);padding:4px 8px;border-radius:999px;font-size:12px;color:var(--muted)}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+
+    /* Footer */
+    .footer{color:var(--muted);text-align:center;margin:28px 0}
+
+    /* Modal preview */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal.show{display:flex}
+    .dialog{background:var(--panel);border:1px solid var(--soft);border-radius:18px;box-shadow:var(--shadow);width:min(1200px,96vw);height:min(800px,90vh);display:flex;flex-direction:column;overflow:hidden}
+    .dialog header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--soft)}
+    .dialog header .left{display:flex;align-items:center;gap:8px}
+    .dialog header .title{font-weight:700}
+    .dialog header .controls{display:flex;gap:8px}
+    .dialog iframe{flex:1;border:0;background:#fff}
+    .icon{width:18px;height:18px;display:inline-block}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="brand">
+        <div class="avatar" id="avatar">NL</div>
+        <div class="title">Project Hub</div>
+      </div>
+      <div class="toolbar">
+        <input id="search" class="input" type="search" placeholder="Tìm project... (Ctrl+/)" />
+        <button class="btn" id="themeToggle" title="Đổi giao diện">🌓</button>
+      </div>
+    </div>
+
+    <div class="filters" id="filters"></div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="footer">Made with ❤ — GitHub-style, no framework, 100% static.</div>
+  </div>
+
+  <!-- Modal Preview -->
+  <div class="modal" id="modal">
+    <div class="dialog">
+      <header>
+        <div class="left">
+          <span class="title" id="modalTitle">Xem trước</span>
+        </div>
+        <div class="controls">
+          <a class="btn" id="openNewTab" target="_blank" rel="noopener">Mở tab mới</a>
+          <button class="btn" id="closeModal">Đóng</button>
+        </div>
+      </header>
+      <iframe id="preview" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // ======== CẤU HÌNH DỮ LIỆU PROJECTS ========
+    // Thêm/sửa/xóa project ở đây. url có thể là đường dẫn tuyệt đối (https://) hoặc tương đối (/projects/app1/)
+    const PROJECTS = [
+      {
+        name: "1. Hello World",
+        desc: "Easy Start!",
+        url: "https://orias171.great-site.net/PHP-main/Day1/B1/HelloWord.php",
+        tags: ["javascript", "pwa"],
+        language: { name: "JavaScript", color: "#f1e05a" },
+        stars: 12,
+        updated: "2025-08-10"
+      },
+      {
+        name: "2. Table",
+        desc: "Try to create a table with PHP.",
+        url: "https://orias171.great-site.net/PHP-main/Day1/B2/Table.php",
+        tags: ["php", "template"],
+        language: { name: "PHP", color: "#4F5D95" },
+        stars: 8,
+        updated: "2025-07-22"
+      },
+      {
+        name: "3. Calculator",
+        desc: "A simple calculator with PHP.",
+        url: "https://orias171.great-site.net/PHP-main/Day1/B3/Calculator.php",
+        tags: ["tools", "data"],
+        language: { name: "TypeScript", color: "#3178c6" },
+        stars: 23,
+        updated: "2025-06-30"
+      },
+      {
+        name: "Array Process",
+        desc: "A PHP script to process arrays.",
+        url: "https://orias171.great-site.net/PHP-main/Day1/B4/ArrayProcess.php",
+        tags: ["game", "search"],
+        language: { name: "HTML", color: "#e34c26" },
+        stars: 5,
+        updated: "2025-05-18"
+      }
+    ];
+
+    // ======== TIỆN ÍCH ========
+    const $ = (q, el=document) => el.querySelector(q);
+    const $$ = (q, el=document) => Array.from(el.querySelectorAll(q));
+
+    // Tập hợp tag từ dữ liệu
+    const ALL_TAGS = Array.from(new Set(PROJECTS.flatMap(p => p.tags))).sort();
+
+    // State filter
+    let state = { q: "", tag: "all" };
+
+    // Render filters
+    function renderFilters(){
+      const box = $("#filters");
+      box.innerHTML = "";
+      const mk = (label, val) => {
+        const el = document.createElement("button");
+        el.className = "chip" + (state.tag===val?" active":"");
+        el.textContent = label;
+        el.onclick = () => { state.tag = val; renderFilters(); renderGrid(); };
+        return el;
+      };
+      box.append(mk("Tất cả", "all"));
+      ALL_TAGS.forEach(t => box.append(mk(`#${t}`, t)));
+    }
+
+    // Format thời gian "Cập nhật vào ..."
+    function timeAgo(dateStr){
+      const d = new Date(dateStr);
+      if (Number.isNaN(d)) return "";
+      const diff = (Date.now()-d.getTime())/1000; // seconds
+      const units = [
+        [31536000, "năm"], [2592000, "tháng"], [604800, "tuần"], [86400, "ngày"], [3600, "giờ"], [60, "phút"]
+      ];
+      for (const [sec, label] of units){
+        const v = Math.floor(diff/sec);
+        if (v>=1) return `${v} ${label} trước`;
+      }
+      return "vừa xong";
+    }
+
+    // Render card grid
+    function renderGrid(){
+      const box = $("#grid");
+      const q = state.q.trim().toLowerCase();
+      const tag = state.tag;
+      const filtered = PROJECTS.filter(p => {
+        const matchQ = !q || (p.name+" "+p.desc+" "+p.tags.join(" ")).toLowerCase().includes(q);
+        const matchTag = tag === "all" || p.tags.includes(tag);
+        return matchQ && matchTag;
+      }).sort((a,b) => new Date(b.updated)-new Date(a.updated));
+
+      box.innerHTML = "";
+      filtered.forEach(p => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.setAttribute("role","button");
+        card.setAttribute("tabindex","0");
+        card.dataset.url = p.url;
+
+        card.innerHTML = `
+          <div class="name">
+            <svg class="icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.67 7.67 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.24.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span>${p.name}</span>
+            <span class="badge">${p.tags[0] ?? "project"}</span>
+          </div>
+          <div class="desc">${p.desc}</div>
+          <div class="tags">${p.tags.map(t=>`<span class="badge">#${t}</span>`).join("")}</div>
+          <div class="meta">
+            <span class="lang"><span class="dot" style="background:${p.language?.color||'#999'}"></span>${p.language?.name||'Code'}</span>
+            <span title="Stars">⭐ ${p.stars||0}</span>
+            <span>Đã cập nhật ${timeAgo(p.updated)}</span>
+          </div>
+        `;
+
+        // Click & keyboard open
+        const open = () => openPreview(p.name, p.url);
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); open(); }});
+
+        box.append(card);
+      });
+    }
+
+    // Modal logic
+    const modal = $("#modal");
+    const iframe = $("#preview");
+    const modalTitle = $("#modalTitle");
+    const openNewTab = $("#openNewTab");
+    $("#closeModal").onclick = () => { modal.classList.remove('show'); iframe.src='about:blank'; };
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) $("#closeModal").click(); });
+
+    function openPreview(title, url){
+      modalTitle.textContent = title;
+      openNewTab.href = url;
+      iframe.src = url; // Lưu ý: một số site chặn iframe (X-Frame-Options)
+      modal.classList.add('show');
+
+      // Fallback: nếu trong 3s không load, hiển thị thông báo & gợi ý mở tab mới
+      const timer = setTimeout(()=>{
+        if(iframe.contentWindow && iframe.contentDocument && iframe.contentDocument.readyState === 'complete') return;
+        // Chèn banner nhỏ
+        const banner = document.createElement('div');
+        banner.style.cssText = 'position:absolute;top:64px;left:50%;transform:translateX(-50%);background:var(--soft);border:1px solid var(--soft);padding:8px 12px;border-radius:999px;color:var(--muted);z-index:5';
+        banner.textContent = 'Trang có thể chặn nhúng iframe. Hãy bấm “Mở tab mới”.';
+        $('.dialog').append(banner);
+        setTimeout(()=>banner.remove(), 4000);
+      }, 3000);
+      iframe.addEventListener('load', ()=>clearTimeout(timer), { once:true });
+    }
+
+    // Search
+    const search = $("#search");
+    search.addEventListener('input', ()=>{ state.q = search.value; renderGrid(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='/' && (e.ctrlKey || e.metaKey)){ e.preventDefault(); search.focus(); }});
+
+    // Theme toggle (force light/dark)
+    const themeToggle = $("#themeToggle");
+    function setTheme(mode){
+      document.documentElement.dataset.theme = mode;
+      localStorage.setItem('theme', mode);
+      if(mode==='light'){
+        document.documentElement.style.colorScheme='light';
+      } else if(mode==='dark'){
+        document.documentElement.style.colorScheme='dark';
+      } else {
+        document.documentElement.style.colorScheme='normal';
+      }
+    }
+    themeToggle.onclick = ()=>{
+      const cur = localStorage.getItem('theme')||'auto';
+      const next = cur==='auto'?'dark':cur==='dark'?'light':'auto';
+      setTheme(next);
+      themeToggle.textContent = next==='dark'?'🌙':next==='light'?'☀️':'🌓';
+    };
+    setTheme(localStorage.getItem('theme')||'auto');
+
+    // Avatar initials: đổi thành tên bạn nếu thích
+    const NAME = 'Nguyễn Long';
+    const initials = NAME.split(/\s+/).map(s=>s[0]).slice(-2).join('').toUpperCase();
+    $('#avatar').textContent = initials;
+
+    // Boot
+    renderFilters();
+    renderGrid();
+  </script>
+</body>
+</html>
