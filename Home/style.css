@@ -1,0 +1,97 @@
+/* Phong cách GitHub-style: tối giản, sạch sẽ */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa; /* Màu sáng mặc định */
+    color: #24292e;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: white;
+}
+
+body.dark .card {
+    background-color: #161b22;
+    border-color: #30363d;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.card-body {
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #0366d6;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.btn:hover {
+    background-color: #005cc5;
+}
+
+.btn-group {
+    margin-top: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #e1e4e8;
+    color: #586069;
+}
+
+body.dark footer {
+    color: #8b949e;
+    border-color: #30363d;
+}
