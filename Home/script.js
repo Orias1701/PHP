@@ -1,14 +1,14 @@
-// Toggle theme sáng/tối
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Kiểm tra theme hiện tại từ localStorage
-    if (localStorage.getItem('theme') === 'dark') {
+    // Set dark theme as default if no theme is stored in localStorage
+    if (localStorage.getItem('theme') !== 'light') {
         body.classList.add('dark');
-        toggleButton.textContent = '☀️'; // Biểu tượng mặt trời cho dark mode
+        localStorage.setItem('theme', 'dark');
+        toggleButton.textContent = '☀️'; // Sun icon for dark mode
     } else {
-        toggleButton.textContent = '🌓'; // Biểu tượng mặc định
+        toggleButton.textContent = '🌓'; // Default icon for light mode
     }
 
     toggleButton.addEventListener('click', () => {
