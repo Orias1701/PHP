@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.php">Project Hub</a></h1>
+        <h1><a href="index.php">Assignments</a></h1>
         <button id="theme-toggle">🌓</button>
     </header>
     <main>
@@ -28,10 +28,8 @@
                     echo '        <h2>' . htmlspecialchars($project['name']) . '</h2>';
                     echo '    </div>';
                     echo '    <div class="card-body">';
-                    echo '        <a href="' . htmlspecialchars($project['url']) . '" class="btn">Xem trước</a>';
                     echo '        <div class="btn-group">';
                     echo '            <a href="' . htmlspecialchars($project['url']) . '" target="_blank" class="btn">Mở tab mới</a>';
-                    echo '            <a href="#" class="btn">Đóng</a>';
                     echo '        </div>';
                     echo '    </div>';
                     echo '</div>';
