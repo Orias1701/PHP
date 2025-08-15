@@ -7,7 +7,7 @@ function getProjects() {
             "name" => "1. Hello World",
             "desc" => "Easy Start!",
             "url" => "https://orias171.great-site.net/PHP-main/Day1/B1_HelloWord/index.php",
-            "tags" => ["PHP", "Tutorial"],
+            "tags" => ["PHP", "Code", "Tutorial"],
             "language" => ["name" => "PHP", "color" => "#f1e05a"],
             "stars" => 12,
             "updated" => "2025-08-10"
