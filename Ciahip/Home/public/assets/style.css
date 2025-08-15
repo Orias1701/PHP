@@ -1,7 +1,7 @@
 /* CSS styles for the PHP Project Hub application */
 
-:root {
-  --bg: #0d1117; /* GitHub dark */
+/* :root {
+  --bg: #0d1117;
   --panel: #161b22;
   --soft: #21262d;
   --text: #c9d1d9;
@@ -12,9 +12,9 @@
   --red: #f85149;
   --shadow: 0 10px 30px rgba(0, 0, 0, .35);
   --radius: 14px;
-}
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) { */
   :root {
     --bg: #f6f8fa;
     --panel: #ffffff;
@@ -27,7 +27,7 @@
     --red: #cf222e;
     --shadow: 0 10px 30px rgba(0, 0, 0, .08);
   }
-}
+/* } */
 
 * {
   box-sizing: border-box;
