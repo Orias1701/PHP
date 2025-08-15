@@ -1,9 +1,9 @@
 [
     {
         "name": "1. Hello World",
-        "desc": "Easy Start!",
+        "desc": "introduction",
         "url": "../../Day1/B1_HelloWord/index.php",
-        "tags": ["Lesson 1", "Tutorial"],
+        "tags": ["Week 1", "Intro"],
         "language": {
             "name": "PHP",
             "color": "#f1e05a"
@@ -13,9 +13,9 @@
     },
     {
         "name": "2. Table",
-        "desc": "Try to create a table with PHP.",
+        "desc": "first practice",
         "url": "../../Day1/B2_Table/index.php",
-        "tags": ["Lesson 1", "Tutorial"],
+        "tags": ["Week 1", "Intro"],
         "language": {
             "name": "PHP",
             "color": "#4F5D95"
@@ -25,9 +25,9 @@
     },
     {
         "name": "3. Calculator",
-        "desc": "A simple calculator with PHP.",
+        "desc": "Apply knowledge to create a simple calculator",
         "url": "../../Day1/B3_Calculator/index.php",
-        "tags": ["Lesson 1", "Easy"],
+        "tags": ["Week 1", "Easy"],
         "language": {
             "name": "PHP",
             "color": "#3178c6"
@@ -37,9 +37,9 @@
     },
     {
         "name": "4. Array Process",
-        "desc": "A PHP script to process arrays.",
+        "desc": "Array Processing",
         "url": "../../Day1/B4_ArrayProcess/index.php",
-        "tags": ["Lesson 1", "Easy"],
+        "tags": ["Week 1", "added"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"

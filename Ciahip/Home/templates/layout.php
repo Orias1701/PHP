@@ -23,7 +23,7 @@
 
     <div class="grid" id="grid"></div>
 
-    <div class="footer"></div>
+    <div class="footer">Made with ❤ — GitHub-style, no framework, 100% static.</div>
   </div>
 
   <!-- Modal Preview -->

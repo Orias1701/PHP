@@ -2,43 +2,20 @@
 // src/projects.php
 
 function getProjects() {
-    return [
-        [
-            "name" => "1. Hello World",
-            "desc" => "Easy Start!",
-            "url" => "https://ciahip.great-site.net/PHP-main/Ciahip/Day1/B1_HelloWord/index.php",
-            "tags" => ["PHP", "Code", "Tutorial"],
-            "language" => ["name" => "PHP", "color" => "#f1e05a"],
-            "stars" => 12,
-            "updated" => "2025-08-10"
-        ],
-        [
-            "name" => "2. Table",
-            "desc" => "Try to create a table with PHP.",
-            "url" => "https://ciahip.great-site.net/PHP-main/Ciahip/Day1/B2_Table/index.php",
-            "tags" => ["PHP", "Tutorial"],
-            "language" => ["name" => "PHP", "color" => "#4F5D95"],
-            "stars" => 8,
-            "updated" => "2025-07-22"
-        ],
-        [
-            "name" => "3. Calculator",
-            "desc" => "A simple calculator with PHP.",
-            "url" => "https://ciahip.great-site.net/PHP-main/Ciahip/Day1/B3_Calculator/index.php",
-            "tags" => ["PHP", "Tools", "Tutorial"],
-            "language" => ["name" => "PHP", "color" => "#3178c6"],
-            "stars" => 23,
-            "updated" => "2025-06-30"
-        ],
-        [
-            "name" => "4. Array Process",
-            "desc" => "A PHP script to process arrays.",
-            "url" => "https://ciahip.great-site.net/PHP-main/Ciahip/Day1/B4_ArrayProcess/index.php",
-            "tags" => ["PHP", "Code", "Tutorial"],
-            "language" => ["name" => "PHP", "color" => "#e34c26"],
-            "stars" => 5,
-            "updated" => "2025-05-18"
-        ]
-    ];
+    $jsonFile = __DIR__ . '/projects.json';
+    
+    if (!file_exists($jsonFile)) {
+        return [];
+    }
+    
+    $jsonData = file_get_contents($jsonFile);
+    
+    $projects = json_decode($jsonData, true);
+    
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return [];
+    }
+    
+    return $projects;
 }
 ?>

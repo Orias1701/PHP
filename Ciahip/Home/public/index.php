@@ -37,7 +37,6 @@
                 echo '<div class="meta">';
                 echo '<span class="lang"><span class="dot" style="background:' . ($project['language']['color'] ?? '#999') . '"></span>' . ($project['language']['name'] ?? 'Code') . '</span>';
                 echo '<span title="Stars">⭐ ' . ($project['stars'] ?? 0) . '</span>';
-                // echo '<span>Đã cập nhật ' . timeAgo($project['updated']) . '</span>';
                 echo '</div>';
                 echo '</article>';
             }
