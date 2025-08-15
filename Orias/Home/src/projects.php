@@ -6,7 +6,7 @@ function getProjects() {
         [
             "name" => "1. Hello World",
             "desc" => "Easy Start!",
-            "url" => "https://orias171.great-site.net/PHP-main/Day1/B1_HelloWord/index.php",
+            "url" => "https://orias171.great-site.net/PHP-main/Orias/Day1/B1_HelloWord/index.php",
             "tags" => ["PHP", "Code", "Tutorial"],
             "language" => ["name" => "PHP", "color" => "#f1e05a"],
             "stars" => 12,
@@ -15,7 +15,7 @@ function getProjects() {
         [
             "name" => "2. Table",
             "desc" => "Try to create a table with PHP.",
-            "url" => "https://orias171.great-site.net/PHP-main/Day1/B2_Table/index.php",
+            "url" => "https://orias171.great-site.net/PHP-main/Orias/Day1/B2_Table/index.php",
             "tags" => ["PHP", "Tutorial"],
             "language" => ["name" => "PHP", "color" => "#4F5D95"],
             "stars" => 8,
@@ -24,7 +24,7 @@ function getProjects() {
         [
             "name" => "3. Calculator",
             "desc" => "A simple calculator with PHP.",
-            "url" => "https://orias171.great-site.net/PHP-main/Day1/B3_Calculator/index.php",
+            "url" => "https://orias171.great-site.net/PHP-main/Orias/Day1/B3_Calculator/index.php",
             "tags" => ["PHP", "Tools", "Tutorial"],
             "language" => ["name" => "PHP", "color" => "#3178c6"],
             "stars" => 23,
@@ -33,7 +33,7 @@ function getProjects() {
         [
             "name" => "4. Array Process",
             "desc" => "A PHP script to process arrays.",
-            "url" => "https://orias171.great-site.net/PHP-main/Day1/B4_ArrayProcess/index.php",
+            "url" => "https://orias171.great-site.net/PHP-main/Orias/Day1/B4_ArrayProcess/index.php",
             "tags" => ["PHP", "Code", "Tutorial"],
             "language" => ["name" => "PHP", "color" => "#e34c26"],
             "stars" => 5,
