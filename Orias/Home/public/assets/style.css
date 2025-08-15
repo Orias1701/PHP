@@ -298,3 +298,13 @@ a:hover {
   height: 18px;
   display: inline-block;
 }
+
+/* Ẩn caret trên toàn trang */
+body, *:not(.input) {
+  caret-color: transparent;
+}
+
+/* Hiện caret ở ô nhập liệu */
+.input {
+  caret-color: auto;
+}
