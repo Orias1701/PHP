@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Xử lý mảng</title>
+    <title>Array Processor</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
