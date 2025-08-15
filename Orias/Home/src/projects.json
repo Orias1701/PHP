@@ -2,7 +2,7 @@
     {
         "name": "1. Hello World",
         "desc": "Easy Start!",
-        "url": "../../Day1/B1_HelloWord/index.php",
+        "url": "https://orias171.great-site.net/PHP-main/Orias/Day1/B1_HelloWord/index.php",
         "tags": ["PHP", "Code", "Tutorial"],
         "language": {
             "name": "PHP",

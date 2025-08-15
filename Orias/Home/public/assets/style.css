@@ -1,6 +1,6 @@
 /* CSS styles for the PHP Project Hub application */
 
-:root {
+:root[data-theme="dark"] {
   --bg: #0d1117;
   --panel: #161b22;
   --soft: #21262d;
@@ -14,21 +14,19 @@
   --radius: 14px;
 }
 
-/* @media (prefers-color-scheme: light) { */
-  /* :root {
-    --bg: #f6f8fa;
-    --panel: #ffffff;
-    --soft: #eaeef2;
-    --text: #24292f;
-    --muted: #57606a;
-    --brand: #0969da;
-    --green: #1a7f37;
-    --yellow: #9a6700;
-    --red: #cf222e;
-    --shadow: 0 10px 30px rgba(0, 0, 0, .08);
-    --radius: 14px;
-  } */
-/* } */
+:root[data-theme="light"] {
+  --bg: #f6f8fa;
+  --panel: #ffffff;
+  --soft: #eaeef2;
+  --text: #24292f;
+  --muted: #57606a;
+  --brand: #0969da;
+  --green: #1a7f37;
+  --yellow: #9a6700;
+  --red: #cf222e;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+  --radius: 14px;
+}
 
 * {
   box-sizing: border-box;
