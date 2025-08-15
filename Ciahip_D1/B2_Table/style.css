@@ -1,5 +1,5 @@
 /* Light Mode */
-/* :root {
+:root {
     --primary-color: #04AA6D;
     --primary-hover: #039658;
     --text-color: #333;
@@ -16,10 +16,10 @@
     --padding-button-small: 6px 10px;
     --border-radius: 4px;
     --max-width: 800px;
-} */
+}
 
 /* Dark Mode */
-:root {
+/* :root {
     --primary-color: #ffa228;
     --primary-hover: #cc6b11;
     --text-color: #e0e0e0;
@@ -36,7 +36,7 @@
     --padding-button-small: 6px 10px;
     --border-radius: 4px;
     --max-width: 800px;
-}
+} */
 
 /* Reset mặc định */
 * {

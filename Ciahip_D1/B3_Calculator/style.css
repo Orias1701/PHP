@@ -1,5 +1,5 @@
 /* Light Mode */
-/* :root {
+:root {
     --primary-color: #04AA6D;
     --primary-hover: #039658;
     --secondary-color: #6c757d;
@@ -11,10 +11,10 @@
     --input-bg: #f9f9f9;
     --result-bg: #e7f3e7;
     --shadow-color: rgba(0, 0, 0, 0.1);
-} */
+}
 
 /* Dark Mode */
-:root {
+/* :root {
     --primary-color: #ffa228;
     --primary-hover: #cc6b11;
     --secondary-color: #a0a6ad;
@@ -26,7 +26,7 @@
     --input-bg: #333;
     --result-bg: #2a3d2a;
     --shadow-color: rgba(0, 0, 0, 0.4);
-}
+} */
 
 /* Reset mặc định */
 * {

@@ -1,5 +1,5 @@
 /* Light Mode */
-/* :root {
+:root {
     --primary-color: #04AA6D;
     --primary-hover: #039658;
     --secondary-color: #6c757d;
@@ -11,10 +11,10 @@
     --input-bg: #f9f9f9;
     --result-bg: #e7f3e7;
     --shadow-color: rgba(0, 0, 0, 0.1);
-} */
+}
 
 /* Dark Mode */
-:root {
+/* :root {
     --primary-color: #ffa228;
     --primary-hover: #cc6b11;
     --secondary-color: #a0a6ad;
@@ -26,7 +26,8 @@
     --input-bg: #333;
     --result-bg: #2a3d2a;
     --shadow-color: rgba(0, 0, 0, 0.4);
-}
+} */
+
 
 /* Reset mặc định */
 * {
@@ -46,7 +47,7 @@ body {
 
 /* Container chính */
 .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 30px auto;
     background-color: var(--white);
     padding: 20px;
@@ -68,19 +69,13 @@ form {
     gap: 15px;
 }
 
-label {
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-input[type="number"],
-select {
+input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     width: 100%;
-        color: var(--text-color);
+    color: var(--text-color);
     ::-webkit-input-placeholder {
         color: var(--secondary-color);
     }
@@ -97,16 +92,22 @@ select {
     transition: border-color 0.3s;
 }
 
-input[type="number"]:focus,
-select:focus {
+input[type="text"]:focus {
     outline: none;
     border-color: var(--primary-color);
     background-color: var(--white);
 }
 
-/* Nút tính */
+/* Định dạng khu vực các nút */
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Nút xử lý */
 button {
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 16px;
     background-color: var(--primary-color);
     color: var(--white);
@@ -118,6 +119,21 @@ button {
 
 button:hover {
     background-color: var(--primary-hover);
+}
+
+/* Nút làm mới */
+.btn-secondary {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
 }
 
 /* Kết quả */
@@ -132,20 +148,33 @@ button:hover {
     line-height: 1.8;
 }
 
+.result p {
+    margin-bottom: 10px;
+}
+
+.result strong {
+    color: var(--primary-color);
+}
+
 /* Responsive cho thiết bị nhỏ */
 @media screen and (max-width: 600px) {
     .container {
         padding: 15px;
     }
 
-    input[type="number"],
-    select,
-    button {
+    input[type="text"],
+    button,
+    .btn-secondary {
         font-size: 14px;
         padding: 8px;
     }
 
     .result {
         font-size: 14px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 8px;
     }
 }
