@@ -14,7 +14,7 @@
     {
         "name": "2. Table",
         "desc": "Try to create a table with PHP.",
-        "url": "https://orias171.great-site.net/PHP-main/Orias/Day1/B2_Table/index.php",
+        "url": "../../Day1/B2_Table/index.php",
         "tags": ["PHP", "Tutorial"],
         "language": {
             "name": "PHP",
@@ -26,7 +26,7 @@
     {
         "name": "3. Calculator",
         "desc": "A simple calculator with PHP.",
-        "url": "https://orias171.great-site.net/PHP-main/Orias/Day1/B3_Calculator/index.php",
+        "url": "../../Day1/B3_Calculator/index.php",
         "tags": ["PHP", "Tools", "Tutorial"],
         "language": {
             "name": "PHP",
@@ -38,7 +38,7 @@
     {
         "name": "4. Array Process",
         "desc": "A PHP script to process arrays.",
-        "url": "https://orias171.great-site.net/PHP-main/Orias/Day1/B4_ArrayProcess/index.php",
+        "url": "../../Day1/B4_ArrayProcess/index.php",
         "tags": ["PHP", "Code", "Tutorial"],
         "language": {
             "name": "PHP",
