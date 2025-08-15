@@ -8,19 +8,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $operation = $_POST["operation"];
 
     switch ($operation) {
-        case "tong":
-            $result = "Kết quả: " . tong($a, $b);
-            break;
-        case "hieu":
-            $result = "Kết quả: " . hieu($a, $b);
-            break;
-        case "tich":
-            $result = "Kết quả: " . tich($a, $b);
-            break;
-        case "thuong":
-            $result = "Kết quả: " . thuong($a, $b);
-            break;
+    case "tong":
+        $res = tong($a, $b);
+        $result = "Kết quả: " . $res;
+        break;
+    case "hieu":
+        $res = hieu($a, $b);
+        $result = "Kết quả: " . $res;
+        break;
+    case "tich":
+        $res = tich($a, $b);
+        $result = "Kết quả: " . $res;
+        break;
+    case "thuong":
+        $res = thuong($a, $b);
+        $result = "Kết quả: " . $res;
+        break;
+}
+
+    if (isset($res) && $res == (int)$res) { 
+        $result .= "<br>" . ($res % 2 == 0 ? "Là số chẵn" : "Là số lẻ");
+        $result .= "<br>" . (laNguyenTo($res) ? "Là số nguyên tố" : "Không phải số nguyên tố");
     }
+
 }
 ?>
 <!DOCTYPE html>
