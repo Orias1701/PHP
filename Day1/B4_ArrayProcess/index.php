@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Xử lý Mảng</h2>
+    <h2>Array Processor</h2>
     <form method="POST">
         <input type="text" name="mang" placeholder="Nhập mảng (cách nhau bởi dấu phẩy)" 
                value="<?php echo isset($_POST['mang']) ? $_POST['mang'] : ''; ?>" required>
@@ -29,8 +29,6 @@
         echo "<p><strong>Tổng các phần tử:</strong> " . tinhTong($arr) . "</p>";
         echo "<p><strong>Giá trị lớn nhất:</strong> " . timMax($arr) . "</p>";
         echo "<p><strong>Giá trị nhỏ nhất:</strong> " . timMin($arr) . "</p>";
-
-
 
         $sorted = sapXepTang($arr);
         echo "<p><strong>Mảng sau khi sắp xếp tăng:</strong> " . hienMang($sorted) . "</p>";

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Trang PHP của bạn</title>
+    <title>Table</title>
     <link rel="stylesheet" href="style.css">
 </head>
 

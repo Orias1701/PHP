@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Máy Tính PHP</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
