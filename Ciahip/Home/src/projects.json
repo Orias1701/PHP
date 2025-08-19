@@ -1,7 +1,7 @@
 [
     {
-        "name": "1. Hello World",
-        "desc": "introduction",
+        "name": "Bài 1. Hello, World",
+        "desc": "Hello World",
         "url": "../../Day1/B1_HelloWord/index.php",
         "tags": ["Week 1", "Intro"],
         "language": {
@@ -12,8 +12,8 @@
         "updated": "2025-08-10"
     },
     {
-        "name": "2. Table",
-        "desc": "first practice",
+        "name": "Bài 2. Tạo Bảng",
+        "desc": "Luyện tập",
         "url": "../../Day1/B2_Table/index.php",
         "tags": ["Week 1", "Intro"],
         "language": {
@@ -24,8 +24,8 @@
         "updated": "2025-07-22"
     },
     {
-        "name": "3. Calculator",
-        "desc": "Apply knowledge to create a simple calculator",
+        "name": "Bài 3. Máy Tính Đơn Giản",
+        "desc": "Vận dụng",
         "url": "../../Day1/B3_Calculator/index.php",
         "tags": ["Week 1", "Easy"],
         "language": {
@@ -36,8 +36,8 @@
         "updated": "2025-06-30"
     },
     {
-        "name": "4. Array Process",
-        "desc": "Array Processing",
+        "name": "Bài 4. Xử Lý Mảng",
+        "desc": "Thêm 1 chút giải thuật",
         "url": "../../Day1/B4_ArrayProcess/index.php",
         "tags": ["Week 1", "added"],
         "language": {
