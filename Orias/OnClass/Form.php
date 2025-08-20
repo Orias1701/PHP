@@ -12,7 +12,7 @@
         <label>Tên sách: <input type="text" name="book"></label><br><br>
         <label>Tác giả: <input type="text" name="owner"></label><br><br>
         <label>Nhà xuất bản: <input type="text" name="deployer"></label><br><br>
-        <label>Năm xuất bản: <input type="number" name="yẻ"></label><br><br>
+        <label>Năm xuất bản: <input type="number" name="year"></label><br><br>
 
         <!-- 2 nút gửi, mỗi nút có method riêng -->
         <button type="submit" formmethod="get">GET</button>
