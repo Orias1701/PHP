@@ -150,10 +150,17 @@ body, *:not(.inf, .message-box) {
 }
 
 .error-message {
-    color: #D8000C;
-    font-size: 0.875em;
     display: block;
-    margin-top: 4px;
+    color: #D8000C;
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    height: 10px;
+}
+.info .error-message {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    height: 0px;
 }
 
 .submit-button-container {
@@ -243,15 +250,22 @@ body, *:not(.inf, .message-box) {
     border-radius: 4px;
 }
 
-.error-message {
-    color: #D8000C;
-    font-size: 0.8em;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    height: 10px;
+.back-button-wrapper {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #c3e6cb;
 }
-.info .error-message {
-    margin-top: -10px;
-    margin-bottom: 10px;
-    height: 0px;
+.back-btn {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.back-btn:hover {
+    background-color: #5a6268;
 }

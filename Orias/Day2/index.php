@@ -7,11 +7,11 @@ session_start();
 
 // BƯỚC 1: THÊM ĐOẠN MÃ NÀY ĐỂ XỬ LÝ YÊU CẦU XÓA SESSION
 // Kiểm tra xem URL có tham số ?clear_session=true hay không, nếu có, xóa dữ liệu form đã lưu trong session
-if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
-    unset($_SESSION['form_data']);
-    header('Location: index.php');
-    exit();
-}
+// if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
+//     unset($_SESSION['form_data']);
+//     header('Location: index.php');
+//     exit();
+// }
 
 $errors = [];
 $save_message = '';
@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // TRƯỜNG HỢP 1: Nhấn nút "Save Progress"
     if ($action === 'save') {
         $save_message = "Your progress has been saved successfully!";
-        // Không làm gì thêm, chỉ cần tải lại form với dữ liệu đã lưu.
     }
+
     // TRƯỜNG HỢP 2: Nhấn nút "Submit Payment"
     elseif ($action === 'submit') {
         if (empty($first_name)) $errors['first_name'] = 'First Name is required.';
@@ -76,14 +76,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (in_array($file_ext, $allowed_exts)) {
                 if ($file_size <= 1048576) { // 1MB
-                    $new_file_name = uniqid('', true) . '.' . $file_ext;
-                    $upload_destination = dirname(dirname(__DIR__)) . '/uploads/' . $new_file_name;
+                    $uploaded_file_path = $file_name; 
+                    // $new_file_name = uniqid('', true) . '.' . $file_ext;
+                    // $upload_destination = dirname(dirname(__DIR__)) . '/uploads/' . $new_file_name;
                     
-                    if (move_uploaded_file($file_tmp_name, $upload_destination)) {
-                        $uploaded_file_path = $upload_destination;
-                    } else {
-                        $errors['file'] = 'Failed to move uploaded file.';
-                    }
+                    // if (move_uploaded_file($file_tmp_name, $upload_destination)) {
+                    //     $uploaded_file_path = $upload_destination;
+                    // } else {
+                    //     $errors['file'] = 'Failed to move uploaded file.';
+                    // }
                 } else {
                     $errors['file'] = 'File is too large! Maximum size is 1MB.';
                 }
@@ -136,6 +137,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </ul>
             <h4>Uploaded Receipt:</h4>
             <img src="<?php echo htmlspecialchars($uploaded_file_path); ?>" alt="Uploaded Receipt">
+            <div class="back-button-wrapper">
+                <a href="index.php" class="back-btn">Return to Form</a>
+            </div>
         </div>
 
     <?php else: ?>
@@ -215,12 +219,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     <?php endif; ?>
-    <script>
+    <!-- <script>
         const serverData = {
-            hasSession: <?php echo isset($_SESSION['form_data']) && !empty($_SESSION['form_data']) ? 'true' : 'false'; ?>
+            hasSession: "?php echo isset($_SESSION['form_data']) && !empty($_SESSION['form_data']) ? 'true' : 'false'; ?>"
         };
-    </script>
-    
+    </script> -->
     <script src="script.js"></script>
     </body>
 </html>

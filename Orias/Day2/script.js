@@ -1,5 +1,5 @@
-// Chờ cho toàn bộ nội dung trang được tải xong
-document.addEventListener('DOMContentLoaded', function() {
+// // Chờ cho toàn bộ nội dung trang được tải xong
+// document.addEventListener('DOMContentLoaded', function() {
 
     // === PHẦN 1: LOGIC HIỂN THỊ TÊN FILE UPLOAD ===
     const fileInput = document.getElementById('file-upload');
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // === PHẦN 2: LOGIC HIỂN THỊ POPUP XÁC NHẬN ===
-    if (typeof serverData !== 'undefined' && serverData.hasSession) {
-        const userChoice = confirm("Bạn có dữ liệu form chưa gửi. Bạn có muốn tiếp tục phiên làm việc này không?");
-        if (!userChoice) {
-            window.location.href = 'index.php?clear_session=true';
-        }
-    }
+//     // === PHẦN 2: LOGIC HIỂN THỊ POPUP XÁC NHẬN ===
+//     if (typeof serverData !== 'undefined' && serverData.hasSession) {
+//         const userChoice = confirm("Bạn có dữ liệu form chưa gửi. Bạn có muốn tiếp tục phiên làm việc này không?");
+//         if (!userChoice) {
+//             window.location.href = 'index.php?clear_session=true';
+//         }
+//     }
 
-});
+// });
