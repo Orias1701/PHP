@@ -5,6 +5,18 @@ ini_set('session.gc_maxlifetime', 1800);
 session_set_cookie_params(1800);
 session_start();
 
+// BƯỚC 1: THÊM ĐOẠN MÃ NÀY ĐỂ XỬ LÝ YÊU CẦU XÓA SESSION
+// Kiểm tra xem URL có tham số ?clear_session=true hay không
+if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
+    // Nếu có, xóa dữ liệu form đã lưu trong session
+    unset($_SESSION['form_data']);
+    
+    // Chuyển hướng về trang gốc (không còn tham số trên URL) và dừng script
+    header('Location: index.php');
+    exit();
+}
+
+
 // Khởi tạo các biến
 $errors = [];
 $save_message = ''; // Biến mới cho thông báo lưu thành công
@@ -205,11 +217,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="submit-button-container">
+                <a href="index.php?clear_session=true" class="clear-btn">Clear Form</a>
+
                 <button type="submit" name="action" value="save" class="save-btn">Save Progress</button>
                 <button type="submit" name="action" value="submit" class="submit-btn">Submit Payment</button>
             </div>
         </form>
     <?php endif; ?>
+    <script>
+        const serverData = {
+            hasSession: <?php echo isset($_SESSION['form_data']) && !empty($_SESSION['form_data']) ? 'true' : 'false'; ?>
+        };
+    </script>
+    
     <script src="script.js"></script>
     </body>
 </html>

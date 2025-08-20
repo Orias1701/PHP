@@ -1,9 +1,9 @@
 [
     {
-        "name": "1. Hello World",
+        "name": "1.1. Hello World",
         "desc": "Easy Start!",
         "url": "../../Day1/B1_HelloWord/index.php",
-        "tags": ["Lesson 1", "Tutorial"],
+        "tags": ["Lesson 1"],
         "language": {
             "name": "PHP",
             "color": "#f1e05a"
@@ -12,10 +12,10 @@
         "updated": "2025-08-10"
     },
     {
-        "name": "2. Table",
+        "name": "1.2. Table",
         "desc": "Try to create a table with PHP.",
         "url": "../../Day1/B2_Table/index.php",
-        "tags": ["Lesson 1", "Tutorial"],
+        "tags": ["Lesson 1"],
         "language": {
             "name": "PHP",
             "color": "#4F5D95"
@@ -24,10 +24,10 @@
         "updated": "2025-07-22"
     },
     {
-        "name": "3. Calculator",
+        "name": "1.3. Calculator",
         "desc": "A simple calculator with PHP.",
         "url": "../../Day1/B3_Calculator/index.php",
-        "tags": ["Lesson 1", "Easy"],
+        "tags": ["Lesson 1"],
         "language": {
             "name": "PHP",
             "color": "#3178c6"
@@ -36,10 +36,10 @@
         "updated": "2025-06-30"
     },
     {
-        "name": "4. Array Process",
+        "name": "1.4. Array Process",
         "desc": "A PHP script to process arrays.",
         "url": "../../Day1/B4_ArrayProcess/index.php",
-        "tags": ["Lesson 1", "Easy"],
+        "tags": ["Lesson 1"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"
@@ -48,10 +48,10 @@
         "updated": "2025-05-18"
     },
     {
-        "name": "1. Validate Form",
+        "name": "2.1. Validate Form",
         "desc": "Use Session for Form",
         "url": "../../Day2/index.php",
-        "tags": ["Lesson 2", "Middle"],
+        "tags": ["Lesson 2"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"
