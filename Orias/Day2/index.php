@@ -6,20 +6,15 @@ session_set_cookie_params(1800);
 session_start();
 
 // BƯỚC 1: THÊM ĐOẠN MÃ NÀY ĐỂ XỬ LÝ YÊU CẦU XÓA SESSION
-// Kiểm tra xem URL có tham số ?clear_session=true hay không
+// Kiểm tra xem URL có tham số ?clear_session=true hay không, nếu có, xóa dữ liệu form đã lưu trong session
 if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
-    // Nếu có, xóa dữ liệu form đã lưu trong session
     unset($_SESSION['form_data']);
-    
-    // Chuyển hướng về trang gốc (không còn tham số trên URL) và dừng script
     header('Location: index.php');
     exit();
 }
 
-
-// Khởi tạo các biến
 $errors = [];
-$save_message = ''; // Biến mới cho thông báo lưu thành công
+$save_message = '';
 
 // Lấy dữ liệu từ session để điền lại vào form (nếu có).
 $first_name = $_SESSION['form_data']['first_name'] ?? '';
@@ -63,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // TRƯỜNG HỢP 2: Nhấn nút "Submit Payment"
     elseif ($action === 'submit') {
-        // Thực hiện validate và xử lý file như cũ
         if (empty($first_name)) $errors['first_name'] = 'First Name is required.';
         if (empty($last_name)) $errors['last_name'] = 'Last Name is required.';
         if (empty($email)) $errors['email'] = 'Email is required.';
@@ -72,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($categories)) $errors['categories'] = 'Please select at least one category.';
 
         if (isset($_FILES['file-upload']) && $_FILES['file-upload']['error'] == 0) {
-            // ... (toàn bộ code xử lý file upload giữ nguyên như cũ)
             $file = $_FILES['file-upload'];
             $file_name = $file['name'];
             $file_tmp_name = $file['tmp_name'];
@@ -84,7 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (in_array($file_ext, $allowed_exts)) {
                 if ($file_size <= 1048576) { // 1MB
                     $new_file_name = uniqid('', true) . '.' . $file_ext;
-                    // Lùi lại 2 cấp từ thư mục hiện tại và sau đó đi vào thư mục 'uploads'
                     $upload_destination = dirname(dirname(__DIR__)) . '/uploads/' . $new_file_name;
                     
                     if (move_uploaded_file($file_tmp_name, $upload_destination)) {
@@ -102,10 +94,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors['file'] = 'Payment receipt is required.';
         }
 
-        // Nếu không có lỗi, hiển thị trang thành công
         if (empty($errors)) {
             $form_submitted_successfully = true;
-            unset($_SESSION['form_data']); // Xóa session sau khi submit thành công
+            unset($_SESSION['form_data']);
         }
     }
 }
