@@ -1,13 +1,15 @@
 <?php
-// BƯỚC 1: Bắt đầu hoặc tiếp tục một phiên làm việc (session).
-// Đây phải là dòng đầu tiên, trước bất kỳ output HTML nào.
+
+// === CẤU HÌNH THỜI GIAN TỒN TẠI CỦA SESSION ===
+ini_set('session.gc_maxlifetime', 1800);
+session_set_cookie_params(1800);
 session_start();
 
 // Khởi tạo các biến
 $errors = [];
+$save_message = ''; // Biến mới cho thông báo lưu thành công
 
-// BƯỚC 2: Lấy dữ liệu từ session để điền lại vào form (nếu có).
-// Sử dụng toán tử '??' để gán giá trị mặc định nếu session chưa tồn tại.
+// Lấy dữ liệu từ session để điền lại vào form (nếu có).
 $first_name = $_SESSION['form_data']['first_name'] ?? '';
 $last_name  = $_SESSION['form_data']['last_name'] ?? '';
 $email      = $_SESSION['form_data']['email'] ?? '';
@@ -21,7 +23,7 @@ $form_submitted_successfully = false;
 // Kiểm tra nếu form được submit bằng phương thức POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // 1. Lấy và làm sạch dữ liệu từ form
+    // BƯỚC A: Lấy và làm sạch dữ liệu từ form (luôn thực hiện)
     $first_name = trim($_POST['first_name'] ?? '');
     $last_name  = trim($_POST['last_name'] ?? '');
     $email      = trim($_POST['email'] ?? '');
@@ -29,8 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categories = $_POST['category'] ?? [];
     $message    = trim($_POST['message-box'] ?? '');
 
-    // BƯỚC 3: Lưu dữ liệu vừa nhập vào session.
-    // Việc này đảm bảo dữ liệu luôn được giữ lại sau mỗi lần submit, dù thành công hay thất bại.
+    // BƯỚC B: Lưu dữ liệu vừa nhập vào session (luôn thực hiện)
     $_SESSION['form_data'] = [
         'first_name'  => $first_name,
         'last_name'   => $last_name,
@@ -40,41 +41,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'message-box' => $message,
     ];
 
-    // 2. Validate dữ liệu (logic không thay đổi)
-    if (empty($first_name)) {
-        $errors['first_name'] = 'First Name is required.';
-    }
-    if (empty($last_name)) {
-        $errors['last_name'] = 'Last Name is required.';
-    }
-    if (empty($email)) {
-        $errors['email'] = 'Email is required.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'Invalid email format.';
-    }
-    if (empty($invoice_id)) {
-        $errors['invoice_id'] = 'Invoice ID is required.';
-    }
-    if (empty($categories)) {
-        $errors['categories'] = 'Please select at least one category.';
-    }
+    // BƯỚC C: Kiểm tra xem nút nào đã được nhấn
+    $action = $_POST['action'] ?? 'submit'; // Mặc định là 'submit'
 
-    // 3. Xử lý file upload (logic không thay đổi)
-    if (isset($_FILES['file-upload']) && $_FILES['file-upload']['error'] == 0) {
-        $file = $_FILES['file-upload'];
-        $file_name = $file['name'];
-        $file_tmp_name = $file['tmp_name'];
-        $file_size = $file['size'];
-        $file_error = $file['error'];
-        
-        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        $allowed_exts = ['jpg', 'jpeg', 'png', 'gif'];
+    // TRƯỜNG HỢP 1: Nhấn nút "Save Progress"
+    if ($action === 'save') {
+        $save_message = "Your progress has been saved successfully!";
+        // Không làm gì thêm, chỉ cần tải lại form với dữ liệu đã lưu.
+    }
+    // TRƯỜNG HỢP 2: Nhấn nút "Submit Payment"
+    elseif ($action === 'submit') {
+        // Thực hiện validate và xử lý file như cũ
+        if (empty($first_name)) $errors['first_name'] = 'First Name is required.';
+        if (empty($last_name)) $errors['last_name'] = 'Last Name is required.';
+        if (empty($email)) $errors['email'] = 'Email is required.';
+        elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Invalid email format.';
+        if (empty($invoice_id)) $errors['invoice_id'] = 'Invoice ID is required.';
+        if (empty($categories)) $errors['categories'] = 'Please select at least one category.';
 
-        if (in_array($file_ext, $allowed_exts)) {
-            if ($file_error === 0) {
+        if (isset($_FILES['file-upload']) && $_FILES['file-upload']['error'] == 0) {
+            // ... (toàn bộ code xử lý file upload giữ nguyên như cũ)
+            $file = $_FILES['file-upload'];
+            $file_name = $file['name'];
+            $file_tmp_name = $file['tmp_name'];
+            $file_size = $file['size'];
+            
+            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            $allowed_exts = ['jpg', 'jpeg', 'png', 'gif'];
+
+            if (in_array($file_ext, $allowed_exts)) {
                 if ($file_size <= 1048576) { // 1MB
                     $new_file_name = uniqid('', true) . '.' . $file_ext;
-                    $upload_destination = '../../uploads/' . $new_file_name;
+                    // Lùi lại 2 cấp từ thư mục hiện tại và sau đó đi vào thư mục 'uploads'
+                    $upload_destination = dirname(dirname(__DIR__)) . '/uploads/' . $new_file_name;
                     
                     if (move_uploaded_file($file_tmp_name, $upload_destination)) {
                         $uploaded_file_path = $upload_destination;
@@ -85,18 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $errors['file'] = 'File is too large! Maximum size is 1MB.';
                 }
             } else {
-                $errors['file'] = 'There was an error uploading your file.';
+                $errors['file'] = 'Invalid file type. Only jpg, jpeg, png, gif are allowed.';
             }
         } else {
-            $errors['file'] = 'Invalid file type. Only jpg, jpeg, png, gif are allowed.';
+            $errors['file'] = 'Payment receipt is required.';
         }
-    } else {
-        $errors['file'] = 'Payment receipt is required.';
-    }
 
-    if (empty($errors)) {
-        $form_submitted_successfully = true;
-        unset($_SESSION['form_data']);
+        // Nếu không có lỗi, hiển thị trang thành công
+        if (empty($errors)) {
+            $form_submitted_successfully = true;
+            unset($_SESSION['form_data']); // Xóa session sau khi submit thành công
+        }
     }
 }
 ?>
@@ -140,6 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php else: ?>
 
         <h2>Payment Receipt Upload Form</h2>
+        <?php if (!empty($save_message)): ?>
+            <div class="save-success-message"><?php echo $save_message; ?></div>
+        <?php endif; ?>
         <form class="form" method="POST" action="index.php" enctype="multipart/form-data">
             <div class="form-input">
                 <div class="info">
@@ -204,7 +205,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="submit-button-container">
-                 <button type="submit" class="submit-btn">Submit Payment</button>
+                <button type="submit" name="action" value="save" class="save-btn">Save Progress</button>
+                <button type="submit" name="action" value="submit" class="submit-btn">Submit Payment</button>
             </div>
         </form>
     <?php endif; ?>
