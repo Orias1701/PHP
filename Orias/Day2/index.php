@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($file_error === 0) {
                 if ($file_size <= 1048576) { // 1MB
                     $new_file_name = uniqid('', true) . '.' . $file_ext;
-                    $upload_destination = 'uploads/' . $new_file_name;
+                    $upload_destination = '../../uploads/' . $new_file_name;
                     
                     if (move_uploaded_file($file_tmp_name, $upload_destination)) {
                         $uploaded_file_path = $upload_destination;
