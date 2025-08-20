@@ -46,5 +46,17 @@
         },
         "stars": 4,
         "updated": "2025-05-18"
+    },
+    {
+        "name": "1. Validate Form",
+        "desc": "Use Session for Form",
+        "url": "../../Day2/index.php",
+        "tags": ["Lesson 2", "Middle"],
+        "language": {
+            "name": "PHP",
+            "color": "#e34c26"
+        },
+        "stars": 5,
+        "updated": "2025-05-20"
     }
 ]
