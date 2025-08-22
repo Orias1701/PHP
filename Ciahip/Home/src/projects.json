@@ -1,6 +1,6 @@
 [
     {
-        "name": "Bài 1. Hello, World",
+        "name": "Buổi 1 - Bài 1. Hello, World",
         "desc": "Hello World",
         "url": "../../Day1/B1_HelloWord/index.php",
         "tags": ["Week 1", "Intro"],
@@ -12,7 +12,7 @@
         "updated": "2025-08-10"
     },
     {
-        "name": "Bài 2. Tạo Bảng",
+        "name": "Buổi 1 - Bài 2. Tạo Bảng",
         "desc": "Luyện tập",
         "url": "../../Day1/B2_Table/index.php",
         "tags": ["Week 1", "Intro"],
@@ -24,7 +24,7 @@
         "updated": "2025-07-22"
     },
     {
-        "name": "Bài 3. Máy Tính Đơn Giản",
+        "name": "Buổi 1 - Bài 3. Máy Tính Đơn Giản",
         "desc": "Vận dụng",
         "url": "../../Day1/B3_Calculator/index.php",
         "tags": ["Week 1", "Easy"],
@@ -36,7 +36,7 @@
         "updated": "2025-06-30"
     },
     {
-        "name": "Bài 4. Xử Lý Mảng",
+        "name": "Buổi 1 - Bài 4. Xử Lý Mảng",
         "desc": "Thêm 1 chút giải thuật",
         "url": "../../Day1/B4_ArrayProcess/index.php",
         "tags": ["Week 1", "added"],
@@ -46,5 +46,17 @@
         },
         "stars": 4,
         "updated": "2025-05-18"
+    },
+    {
+        "name": "Buổi 2. Validate Form",
+        "desc": "Tạo Form - Sử dụng session",
+        "url": "../../Day2/index.php",
+        "tags": ["Lesson 2"],
+        "language": {
+            "name": "PHP",
+            "color": "#e34c26"
+        },
+        "stars": 5,
+        "updated": "2025-05-20"
     }
 ]
