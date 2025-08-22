@@ -3,7 +3,7 @@
         "name": "Buổi 1 - 1. Hello, World",
         "desc": "Hello World",
         "url": "../../Day1/B1_HelloWord/index.php",
-        "tags": ["Week 1", "Intro"],
+        "tags": ["Week 1"],
         "language": {
             "name": "PHP",
             "color": "#f1e05a"
@@ -15,7 +15,7 @@
         "name": "Buổi 1 - 2. Tạo Bảng",
         "desc": "Luyện tập",
         "url": "../../Day1/B2_Table/index.php",
-        "tags": ["Week 1", "Intro"],
+        "tags": ["Week 1"],
         "language": {
             "name": "PHP",
             "color": "#4F5D95"
@@ -27,7 +27,7 @@
         "name": "Buổi 1 - 3. Máy Tính Đơn Giản",
         "desc": "Vận dụng",
         "url": "../../Day1/B3_Calculator/index.php",
-        "tags": ["Week 1", "Easy"],
+        "tags": ["Week 1"],
         "language": {
             "name": "PHP",
             "color": "#3178c6"
@@ -39,7 +39,7 @@
         "name": "Buổi 1 - 4. Xử Lý Mảng",
         "desc": "Thêm 1 chút giải thuật",
         "url": "../../Day1/B4_ArrayProcess/index.php",
-        "tags": ["Week 1", "added"],
+        "tags": ["Week 1"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"
@@ -51,7 +51,7 @@
         "name": "Buổi 2. Validate Form",
         "desc": "Tạo Form - Sử dụng session",
         "url": "../../Day2/index.php",
-        "tags": ["Lesson 2"],
+        "tags": ["Week 2"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"
