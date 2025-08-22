@@ -7,11 +7,11 @@ session_start();
 
 // BƯỚC 1: THÊM ĐOẠN MÃ NÀY ĐỂ XỬ LÝ YÊU CẦU XÓA SESSION
 // Kiểm tra xem URL có tham số ?clear_session=true hay không, nếu có, xóa dữ liệu form đã lưu trong session
-// if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
-//     unset($_SESSION['form_data']);
-//     header('Location: index.php');
-//     exit();
-// }
+if (isset($_GET['clear_session']) && $_GET['clear_session'] === 'true') {
+    unset($_SESSION['form_data']);
+    header('Location: index.php');
+    exit();
+}
 
 $errors = [];
 $save_message = '';
