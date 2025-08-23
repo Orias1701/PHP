@@ -212,10 +212,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="submit-button-container">
-                <a href="index.php?clear_session=true" class="clear-btn">Clear Form</a>
+                <a href="index.php?clear_session=true" class="clear-btn">Clear</a>
 
-                <button type="submit" name="action" value="save" class="save-btn">Save Progress</button>
-                <button type="submit" name="action" value="submit" class="submit-btn">Submit Payment</button>
+                <button type="submit" name="action" value="save" class="save-btn">Save</button>
+                <button type="submit" name="action" value="submit" class="submit-btn">Submit</button>
             </div>
         </form>
     <?php endif; ?>

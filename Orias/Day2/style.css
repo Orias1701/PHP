@@ -78,20 +78,30 @@ label.label-bot {
 }
 
 .upload {
-    height: 150px;
-    width: 80%;
+    height: 220px;
+    width: 96%;
     margin: 50px 0px 0px;
-    padding: 30px calc(10% - 1px);
+    padding: 5px calc(1% - 1px);
     border: 1px dashed #6b6b6b;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
 }
 
+.upload:hover {
+    border-color: #007BFF;
+}
+
+
 .upload-box {
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
     color: #666;
     padding: 0px;
+    transition: all 0.4s;
 }
 
 input[type="file"] {
@@ -101,8 +111,8 @@ input[type="file"] {
 .upload i{
     margin: auto;
     font-size: 40px;
-    width: 50%;
-    margin: 20px 25% 0px;
+    width: 100%;
+    margin: 55px 0px 0px;
     text-align: center;
     transition: all 0.4s;
 }
@@ -117,7 +127,7 @@ input[type="file"] {
     color: #999;
 }
 
-.upload #browse-file {
+#browse-file {
     font-weight: 700;
     font-size: 20px;
 }
@@ -168,39 +178,41 @@ body, *:not(.inf, .message-box) {
     text-align: center;
 }
 .submit-btn {
+    border: 1px solid #21aa5f;
     background-color: #21aa5f;
     color: white;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .submit-btn:hover {
-    background-color: #45a049;
+    background-color: #ffffff;
+    color: #21aa5f;
 }
 
 .save-btn {
+    border: 1px solid #007BFF;
     background-color: #007BFF;
     color: white;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     margin-right: 10px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .save-btn:hover {
-    background-color: #0056b3;
+    background-color: #ffffff;
+    color: #238de4;
 }
 
 .clear-btn {
+    border: 1px solid #dc3545;
     background-color: #dc3545;
     color: white;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
@@ -209,10 +221,11 @@ body, *:not(.inf, .message-box) {
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .clear-btn:hover {
-    background-color: #c82333;
+    background-color: #ffffff;
+    color: #dc3545;
 }
 
 .save-success-message {
