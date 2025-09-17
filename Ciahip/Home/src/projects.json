@@ -58,5 +58,17 @@
         },
         "stars": 5,
         "updated": "2025-05-20"
+    },
+    {
+        "name": "Buổi 4. My Guests",
+        "desc": "Cơ sở dữ liệu",
+        "url": "../../Day4/list_data.php",
+        "tags": ["Week 4"],
+        "language": {
+            "name": "PHP",
+            "color": "#e34c26"
+        },
+        "stars": 5,
+        "updated": "2025-05-20"
     }
 ]
