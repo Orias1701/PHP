@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config/mysql_config.php';
 
 $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES
 ('John', 'Doe', 'john@example.com'),

@@ -6,10 +6,10 @@
 // $password = "170105";
 
 // Config InfinityFree
-$servername = "sql112.infinityfree.com";
-$dbname     = "if0_39708432_ass";
-$username   = "if0_39708432";
-$password   = "LongK171";
+$servername = "sql206.infinityfree.com";
+$dbname     = "if0_39714427_btvn";
+$username   = "if0_39714427";
+$password   = "Chia1203";
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);

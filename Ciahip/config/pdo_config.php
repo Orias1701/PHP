@@ -6,10 +6,10 @@
 // define('DB_PASS', '170105');
 
 // Config InfinityFree
-define('DB_HOST', 'sql112.infinityfree.com');
-define('DB_NAME', 'if0_39708432_ass');
-define('DB_USER', 'if0_39708432');
-define('DB_PASS', 'LongK171');
+define('DB_HOST', 'sql206.infinityfree.com');
+define('DB_NAME', 'if0_39714427_btvn');
+define('DB_USER', 'if0_39714427');
+define('DB_PASS', 'Chia1203');
 
 // Biến kết nối toàn cục PDO
 global $pdo;

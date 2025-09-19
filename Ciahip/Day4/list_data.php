@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config/mysql_config.php';
 
 echo "
 <div style='margin-bottom:15px;'>
