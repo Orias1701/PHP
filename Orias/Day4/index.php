@@ -1,8 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "170105";
-$dbname = "mydb";
+include '../config/mysql_config.php';
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);

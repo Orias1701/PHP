@@ -2,7 +2,12 @@
 $servername = "sql112.infinityfree.com";
 $username   = "if0_39708432";
 $password   = "LongK171";
-$dbname     = "if0_39708432_mydb";
+$dbname     = "if0_39708432_ass";
+
+// $servername = "localhost";
+// $username = "root";
+// $password = "170105";
+// $dbname = "mydb";
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);

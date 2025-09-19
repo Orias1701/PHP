@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config/mysql_config.php';
 
 $sql = "CREATE TABLE IF NOT EXISTS MyGuests (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
