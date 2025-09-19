@@ -70,5 +70,17 @@
         },
         "stars": 4,
         "updated": "2025-05-20"
+    },
+    {
+        "name": "5.1. Student PDO",
+        "desc": "Use PDO",
+        "url": "../../Day5/students_list.php",
+        "tags": ["Lesson 5"],
+        "language": {
+            "name": "PHP",
+            "color": "#e34c26"
+        },
+        "stars": 7,
+        "updated": "2025-05-20"
     }
 ]
