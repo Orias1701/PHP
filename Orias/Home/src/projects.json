@@ -82,5 +82,17 @@
         },
         "stars": 7,
         "updated": "2025-05-20"
+    },
+    {
+        "name": "5.1. Student PDO",
+        "desc": "Employees PDO",
+        "url": "../../Day6/index.php",
+        "tags": ["Lesson 6"],
+        "language": {
+            "name": "PHP",
+            "color": "#e34c26"
+        },
+        "stars": 7,
+        "updated": "2025-05-20"
     }
 ]

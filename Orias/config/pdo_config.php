@@ -1,15 +1,15 @@
 <?php
 // Config Local
-// define('DB_HOST', 'localhost');
-// define('DB_NAME', 'ass');
-// define('DB_USER', 'root');
-// define('DB_PASS', '170105');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'ass');
+define('DB_USER', 'root');
+define('DB_PASS', '170105');
 
 // Config InfinityFree
-define('DB_HOST', 'sql112.infinityfree.com');
-define('DB_NAME', 'if0_39708432_ass');
-define('DB_USER', 'if0_39708432');
-define('DB_PASS', 'LongK171');
+// define('DB_HOST', 'sql112.infinityfree.com');
+// define('DB_NAME', 'if0_39708432_ass');
+// define('DB_USER', 'if0_39708432');
+// define('DB_PASS', 'LongK171');
 
 // Biến kết nối toàn cục PDO
 global $pdo;
