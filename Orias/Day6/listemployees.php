@@ -1,6 +1,9 @@
 <?php
+require_once "auth.php";
+require_once "createtable.php";
 require_once "../config/pdo_config.php";
 $pdo = connect_db();
+ensure_tables($pdo);
 
 // Thêm
 if (isset($_POST['add'])) {
@@ -10,7 +13,7 @@ if (isset($_POST['add'])) {
         ':f'=>$_POST['first'], ':l'=>$_POST['last'],
         ':d'=>$_POST['department_id'], ':r'=>$_POST['role_id']
     ]);
-    header("Location: employees.php"); exit;
+    header("Location: listemployees.php"); exit;
 }
 
 // Sửa
@@ -21,14 +24,14 @@ if (isset($_POST['update'])) {
         ':d'=>$_POST['department_id'], ':r'=>$_POST['role_id'],
         ':id'=>$_POST['id']
     ]);
-    header("Location: employees.php"); exit;
+    header("Location: listemployees.php"); exit;
 }
 
 // Xóa
 if (isset($_GET['delete'])) {
-    $stmt = $pdo->prepare("DELETE FROM employees WHERE id=:id");
-    $stmt->execute([':id'=>$_GET['delete']]);
-    header("Location: employees.php"); exit;
+    $pdo->prepare("DELETE FROM employees WHERE id=:id")->execute([':id'=>$_GET['delete']]);
+    set_flash("✅ Đã xóa Employee");
+    header("Location: listemployees.php"); exit;
 }
 
 // Tìm kiếm
@@ -74,10 +77,10 @@ disconnect_db();
 <h2>Employees</h2>
 
 <form method="get" style="margin-bottom:15px;">
-  <input type="text" name="search" placeholder="Tìm theo ID, First, Last, Department, Role"
+  <input type="text" name="search" placeholder="Tìm kiếm"
          value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
   <button type="submit">Tìm</button>
-  <a href="employees.php"><button type="button">Reset</button></a>
+  <a href="listemployees.php"><button type="button">Reset</button></a>
 </form>
 
 <button onclick="openPopup('popupAdd')">+ Thêm</button>
@@ -92,38 +95,52 @@ disconnect_db();
   <td><?= htmlspecialchars($r['department']) ?></td>
   <td><?= htmlspecialchars($r['role']) ?></td>
   <td>
-    <button onclick="openPopup('popupEdit<?= $r['id'] ?>')">Sửa</button>
+    <button onclick="openEditPopup(
+        '<?= $r['id'] ?>',
+        '<?= htmlspecialchars($r['first'], ENT_QUOTES) ?>',
+        '<?= htmlspecialchars($r['last'], ENT_QUOTES) ?>',
+        '<?= $r['department_id'] ?>',
+        '<?= $r['role_id'] ?>'
+    )">Sửa</button>
     <button onclick="confirmDelete('?delete=<?= $r['id'] ?>')">Xóa</button>
   </td>
 </tr>
+<?php endforeach; ?>
+</table>
 
 <!-- Popup sửa -->
-<div id="popupEdit<?= $r['id'] ?>" class="popup">
+<div id="popupEdit" class="popup">
   <div class="popup-content">
     <h3>Sửa Employee</h3>
     <form method="post" class="form-grid">
-      <label>ID:</label><input type="text" name="id" value="<?= $r['id'] ?>" readonly>
-      <label>First:</label><input type="text" name="first" value="<?= htmlspecialchars($r['first']) ?>" required>
-      <label>Last:</label><input type="text" name="last" value="<?= htmlspecialchars($r['last']) ?>" required>
+      <label>ID:</label>
+      <input type="text" id="edit-id" name="id" readonly>
+
+      <label>First:</label>
+      <input type="text" id="edit-first" name="first" required>
+
+      <label>Last:</label>
+      <input type="text" id="edit-last" name="last" required>
+
       <label>Department:</label>
-      <select name="department_id">
+      <select id="edit-department" name="department_id">
         <?php foreach($departments as $d): ?>
-        <option value="<?= $d['id'] ?>" <?= $r['department_id']==$d['id']?"selected":"" ?>><?= $d['name'] ?></option>
+        <option value="<?= $d['id'] ?>"><?= $d['name'] ?></option>
         <?php endforeach; ?>
       </select>
+
       <label>Role:</label>
-      <select name="role_id">
+      <select id="edit-role" name="role_id">
         <?php foreach($roles as $role): ?>
-        <option value="<?= $role['id'] ?>" <?= $r['role_id']==$role['id']?"selected":"" ?>><?= $role['name'] ?></option>
+        <option value="<?= $role['id'] ?>"><?= $role['name'] ?></option>
         <?php endforeach; ?>
       </select>
+
       <div></div><button type="submit" name="update">Lưu</button>
-      <div></div><button type="button" onclick="closePopup('popupEdit<?= $r['id'] ?>')">Hủy</button>
+      <div></div><button type="button" onclick="closePopup('popupEdit')">Hủy</button>
     </form>
   </div>
 </div>
-<?php endforeach; ?>
-</table>
 
 <!-- Popup thêm -->
 <div id="popupAdd" class="popup">
@@ -151,5 +168,18 @@ disconnect_db();
 </div>
 
 <script src="../assets/script.js"></script>
+<script>
+  function openEditPopup(id, first, last, department_id, role_id) {
+    document.getElementById("edit-id").value = id;
+    document.getElementById("edit-first").value = first;
+    document.getElementById("edit-last").value = last;
+
+    // set selected option
+    document.getElementById("edit-department").value = department_id;
+    document.getElementById("edit-role").value = role_id;
+
+    openPopup("popupEdit");
+  }
+</script>
 </body>
 </html>

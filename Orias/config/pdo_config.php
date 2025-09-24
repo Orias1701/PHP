@@ -1,29 +1,44 @@
 <?php
 // Config Local
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'ass');
-define('DB_USER', 'root');
-define('DB_PASS', '170105');
+$local = [
+    'host' => 'localhost',
+    'name' => 'ass',
+    'user' => 'root',
+    'pass' => '170105'
+];
 
 // Config InfinityFree
-// define('DB_HOST', 'sql112.infinityfree.com');
-// define('DB_NAME', 'if0_39708432_ass');
-// define('DB_USER', 'if0_39708432');
-// define('DB_PASS', 'LongK171');
+$remote = [
+    'host' => 'sql112.infinityfree.com',
+    'name' => 'if0_39708432_ass',
+    'user' => 'if0_39708432',
+    'pass' => 'LongK171'
+];
+
+define("ADMIN_USER", "admin");
+define("ADMIN_PASS", "admin");
 
 // Biến kết nối toàn cục PDO
 global $pdo;
 $pdo = null;
 
 function connect_db() {
-    global $pdo;
-    if (!$pdo) {
+    global $pdo, $local, $remote;
+    if ($pdo) return $pdo;
+
+    // Thử Local trước
+    try {
+        $dsn = "mysql:host={$local['host']};dbname={$local['name']};charset=utf8";
+        $pdo = new PDO($dsn, $local['user'], $local['pass']);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e1) {
+        // Nếu thất bại → thử Remote
         try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8";
-            $pdo = new PDO($dsn, DB_USER, DB_PASS);
+            $dsn = "mysql:host={$remote['host']};dbname={$remote['name']};charset=utf8";
+            $pdo = new PDO($dsn, $remote['user'], $remote['pass']);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Lỗi kết nối: " . $e->getMessage());
+        } catch (PDOException $e2) {
+            die("❌ Lỗi kết nối DB (Local + Remote): " . $e2->getMessage());
         }
     }
     return $pdo;
@@ -33,7 +48,3 @@ function disconnect_db() {
     global $pdo;
     $pdo = null;
 }
-?>
-
-
-

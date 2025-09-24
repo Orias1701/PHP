@@ -2,7 +2,7 @@
 
 <div class="navbar">
   <a href="index.php">Trang chủ</a>
-  <a href="departments.php">Departments</a>
-  <a href="roles.php">Roles</a>
-  <a href="employees.php">Employees</a>
+  <a href="listdepartments.php">Departments</a>
+  <a href="listroles.php">Roles</a>
+  <a href="listemployees.php">Employees</a>
 </div>
