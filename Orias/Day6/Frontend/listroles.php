@@ -103,6 +103,7 @@ $rows = $pdo->query("SELECT id,name FROM roles ORDER BY id DESC")->fetchAll(PDO:
     </form>
 </div></div>
 
+<script>const isAdmin = <?= is_admin() ? 'true' : 'false' ?>;</script>
 <script src="assets/script.js"></script>
 </body>
 </html>
