@@ -1,5 +1,5 @@
 <?php
-// frontend/students_delete.php (fallback)
+// Frontend/students_delete.php (fallback)
 require_once '../backend/common.php';
 
 $id = (int) ($_GET['id'] ?? 0);

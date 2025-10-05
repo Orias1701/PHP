@@ -1,5 +1,5 @@
 <?php
-// frontend/includes/navbar.php (giữ nguyên từ navbar.php)
+// Frontend/includes/navbar.php (giữ nguyên từ navbar.php)
 $cu = current_user();
 ?>
 <div style="display:flex;gap:10px;align-items:center;padding:10px;background:#24292f;color:#fff;border-radius:8px;margin-bottom:12px">

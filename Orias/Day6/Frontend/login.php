@@ -1,6 +1,6 @@
 <?php
-// frontend/login.php
-require_once '../backend/common.php';
+// Frontend/login.php
+require_once '../Backend/common.php';
 
 $pdo = connect_db();
 ensure_tables($pdo);

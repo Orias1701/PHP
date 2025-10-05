@@ -1,6 +1,6 @@
 <?php
-// frontend/index.php
-require_once '../backend/common.php';
+// Frontend/index.php
+require_once '../Backend/common.php';
 
 // AJAX
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_SERVER['HTTP_X_REQUESTED_WITH']) || isset($_POST['ajax']))) {

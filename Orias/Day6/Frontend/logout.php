@@ -1,6 +1,6 @@
 <?php
-// frontend/logout.php
-require_once '../backend/common.php';
+// Frontend/logout.php
+require_once '../Backend/common.php';
 
 session_start();
 session_unset();

@@ -1,6 +1,6 @@
 <?php
-// frontend/listemployees.php
-require_once '../backend/common.php';
+// Frontend/listemployees.php
+require_once '../Backend/common.php';
 
 require_login();
 $pdo = connect_db();

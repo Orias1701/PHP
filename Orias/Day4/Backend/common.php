@@ -1,5 +1,5 @@
 <?php
-// backend/common.php
+// Backend/common.php
 
 // Include pdo_config
 require_once '../../config/pdo_config.php';

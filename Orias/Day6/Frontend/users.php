@@ -1,6 +1,6 @@
 <?php
-// frontend/users.php
-require_once '../backend/common.php';
+// Frontend/users.php
+require_once '../Backend/common.php';
 
 require_login();
 require_admin();
