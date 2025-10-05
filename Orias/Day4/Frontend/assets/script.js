@@ -13,7 +13,7 @@ async function runAction(action, confirmMsg = null) {
     const fd = new FormData();
     fd.append('ajax', '1');
     fd.append('action', action);
-    const r = await fetch('list_data.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+    const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
     const d = await r.json();
     if (d.ok) {
         reloadTable();
@@ -27,7 +27,7 @@ async function reloadTable() {
     const fd = new FormData();
     fd.append('ajax', '1');
     fd.append('action', 'list');
-    const r = await fetch('list_data.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+    const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
     const d = await r.json();
     const tb = document.getElementById('tb');
     const noTable = document.getElementById('no-table');

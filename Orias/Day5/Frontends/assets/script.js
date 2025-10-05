@@ -29,7 +29,7 @@ async function reloadTable() {
     const fd = new FormData();
     fd.append('ajax', '1');
     fd.append('action', 'list');
-    const r = await fetch('students_list.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+    const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
     const d = await r.json();
     if (!d.ok) return alert(d.error || 'Lỗi');
     const tb = document.querySelector('#tb tbody');
@@ -55,7 +55,7 @@ async function delRow(id) {
     fd.append('ajax', '1');
     fd.append('action', 'delete');
     fd.append('id', id);
-    const r = await fetch('students_list.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+    const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
     const d = await r.json();
     if (d.ok) { reloadTable(); } else alert(d.error || 'Lỗi');
 }
@@ -67,7 +67,7 @@ window.addEventListener('load', () => {
         const fd = new FormData(e.target);
         fd.append('ajax', '1');
         fd.append('action', 'add');
-        const r = await fetch('students_list.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+        const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
         const d = await r.json();
         if (d.ok) { closeP('pAdd'); reloadTable(); } else alert(d.error || 'Lỗi');
     });
@@ -77,7 +77,7 @@ window.addEventListener('load', () => {
         const fd = new FormData(e.target);
         fd.append('ajax', '1');
         fd.append('action', 'update');
-        const r = await fetch('students_list.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+        const r = await fetch('index.php', { method: 'POST', body: fd, headers: { 'X-Requested-With': 'XMLHttpRequest' } });
         const d = await r.json();
         if (d.ok) { closeP('pEdit'); reloadTable(); } else alert(d.error || 'Lỗi');
     });

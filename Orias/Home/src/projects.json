@@ -62,7 +62,7 @@
     {
         "name": "4.1. My Guests",
         "desc": "Connect to Database",
-        "url": "../../Day4/list_data.php",
+        "url": "../../Day4/Frontend/index.php",
         "tags": ["Lesson 4"],
         "language": {
             "name": "PHP",
@@ -74,7 +74,7 @@
     {
         "name": "5.1. Student PDO",
         "desc": "Use PDO",
-        "url": "../../Day5/students_list.php",
+        "url": "../../Day5/Frontend/index.php",
         "tags": ["Lesson 5"],
         "language": {
             "name": "PHP",
@@ -84,10 +84,10 @@
         "updated": "2025-05-20"
     },
     {
-        "name": "6.1. Employees PDO",
+        "name": "Employees PDO",
         "desc": "Employees PDO",
-        "url": "../../Day6/index.php",
-        "tags": ["Lesson 6"],
+        "url": "../../Day6/Frontend/index.php",
+        "tags": ["Lesson 6-7"],
         "language": {
             "name": "PHP",
             "color": "#e34c26"

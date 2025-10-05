@@ -1,5 +1,5 @@
 <?php
-// frontend/students_list.php
+// frontend/index.php
 require_once '../backend/common.php';
 
 // AJAX
