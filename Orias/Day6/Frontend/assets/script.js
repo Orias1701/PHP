@@ -22,7 +22,7 @@ function openAdd(pageType) {
 
 function openEdit(id, name, pageType, extraData = {}) {
     document.getElementById('eid').value = id;
-    document.getElementById('ename').value = name;
+    
     if (pageType === 'employees') {
         const tr = document.querySelector(`tr[data-id="${id}"]`);
         document.getElementById('elast').value = tr.querySelector('.c-last').textContent;
@@ -31,6 +31,8 @@ function openEdit(id, name, pageType, extraData = {}) {
         document.getElementById('erole').value = tr.querySelector('.c-role').dataset.role || '';
     } else if (pageType === 'users') {
         // For reset pass, etc.
+    } else {
+        document.getElementById('ename').value = name;
     }
     openP('pEdit');
 }
