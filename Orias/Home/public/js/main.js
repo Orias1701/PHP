@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   allTags.forEach(tag => {
     const chip = document.createElement('span');
     chip.className = 'chip';
-    chip.textContent = tag === 'all' ? 'Tất cả' : `#${tag}`;
+    chip.textContent = tag === 'all' ? 'All' : `#${tag}`;
     chip.dataset.tag = tag;
     chip.addEventListener('click', () => {
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
