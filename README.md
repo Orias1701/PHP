@@ -1,3 +1,3 @@
-https://orias171.great-site.net/PHP-main/Orias/Home/public/index.php
+https://orias171.great-site.net/Assignment--PHP-Weekly-main/Orias/Home/public/index.php
 
-https://ciahip.great-site.net/PHP-main/Ciahip/Home/public/index.php
+https://ciahip.great-site.net/Assignment--PHP-Weekly-main/Ciahip/Home/public/index.php
