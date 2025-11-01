@@ -4,7 +4,7 @@ $local = [
     'host' => 'localhost',
     'name' => 'ass',
     'user' => 'root',
-    'pass' => '170105'
+    'pass' => 'LongK@170105'
 ];
 
 // Config InfinityFree

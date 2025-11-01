@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_SERVER['HTTP_X_REQUESTED_W
     $action = $_POST['action'] ?? '';
     if ($action === 'ensure') {
         if (!is_admin()) { json_forbidden(); }
-        try { ensure_tables($pdo); echo json_encode(['ok' => true, 'msg' => 'Đã đảm bảo các bảng']); }
+        try { ensure_tables($pdo); echo json_encode(['ok' => true, 'msg' => 'Fixed']); }
         catch (Throwable $e) { echo json_encode(['ok' => false, 'error' => $e->getMessage()]); }
         exit;
     }
@@ -22,16 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_SERVER['HTTP_X_REQUESTED_W
 <html lang="vi">
 <head>
     <meta charset="utf-8">
-    <title>Trang chủ</title>
+    <title>Home</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="index">
 <div class="wrap">
     <?php include 'includes/navbar.php'; ?>
     <div class="card">
-        <h2>Chào mừng</h2>
-        <p>Admin có thể đảm bảo/tạo bảng DB khi cần.</p>
-        <button id="ensure" class="btn" <?= is_admin() ? '' : 'disabled title="Chỉ Admin"' ?>>Đảm bảo các bảng</button>
+        <h2>Welcome</h2>
+        <p></p>
+        <button id="ensure" class="btn" <?= is_admin() ? '' : 'disabled title="Chỉ Admin"' ?>>Fix Tables</button>
         <div id="m" class="msg"></div>
     </div>
 </div>
